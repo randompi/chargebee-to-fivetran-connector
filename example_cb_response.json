@@ -1,0 +1,166 @@
+{
+  "transacations": {
+    "list": [
+      {
+        "transaction": {
+          "id": "txn_AzZcvBS7HIWgi2FnQ",
+          "customer_id": "AzZcvBS7HIGS42FWR",
+          "subscription_id": "AzZcvBS7HIGS42FWR",
+          "gateway_account_id": "gw_16CPQfS5y3U2APe",
+          "payment_source_id": "pm_AzZcvBS7HIWfQ2FnK",
+          "payment_method": "card",
+          "gateway": "stripe",
+          "type": "payment",
+          "date": 1597075139,
+          "exchange_rate": 1,
+          "amount": 120000,
+          "id_at_gateway": "ch_1HEdOpHLLh7YdRB0lHY0e13o",
+          "status": "success",
+          "updated_at": 1597075141,
+          "fraud_reason": "Payment complete.",
+          "resource_version": 1597075141192,
+          "deleted": false,
+          "object": "transaction",
+          "masked_card_number": "************6303",
+          "currency_code": "USD",
+          "base_currency_code": "USD",
+          "amount_unused": 0,
+          "linked_invoices": [
+            {
+              "invoice_id": "1",
+              "applied_amount": 120000,
+              "applied_at": 1597075141,
+              "invoice_date": 1597075137,
+              "invoice_total": 120000,
+              "invoice_status": "paid"
+            }
+          ],
+          "linked_refunds": []
+        }
+      },
+      {
+        "transaction": {
+          "id": "txn_16BTKvSACYpWg2wBM",
+          "customer_id": "AzZcvBS7HIGS42FWR",
+          "subscription_id": "AzZcvBS7HIGS42FWR",
+          "gateway_account_id": "gw_16CPQfS5y3U2APe",
+          "payment_source_id": "pm_AzZcvBS7HIWfQ2FnK",
+          "payment_method": "card",
+          "gateway": "stripe",
+          "type": "payment",
+          "date": 1599753542,
+          "exchange_rate": 1,
+          "amount": 120000,
+          "id_at_gateway": "ch_1HPsAsHLLh7YdRB0HRFwMIXn",
+          "status": "success",
+          "updated_at": 1599753543,
+          "fraud_reason": "Payment complete.",
+          "resource_version": 1599753543927,
+          "deleted": false,
+          "object": "transaction",
+          "masked_card_number": "************6303",
+          "currency_code": "USD",
+          "base_currency_code": "USD",
+          "amount_unused": 0,
+          "linked_invoices": [
+            {
+              "invoice_id": "2",
+              "applied_amount": 120000,
+              "applied_at": 1599753543,
+              "invoice_date": 1599753537,
+              "invoice_total": 120000,
+              "invoice_status": "paid"
+            }
+          ],
+          "linked_refunds": []
+        }
+      }
+    ],
+    "next_offset": "[\"1599753542000\",\"48472219\"]"
+  },
+  "customers": {
+    "list": [
+      {
+        "customer": {
+          "id": "AzZdK6SmhMXmTCVgT",
+          "email": "login@cloudconstructionllc.com",
+          "company": "Test Chargeebee",
+          "auto_collection": "on",
+          "net_term_days": 0,
+          "allow_direct_debit": false,
+          "created_at": 1635021727,
+          "taxability": "taxable",
+          "updated_at": 1635021727,
+          "pii_cleared": "active",
+          "channel": "web",
+          "resource_version": 1635021727831,
+          "deleted": false,
+          "object": "customer",
+          "billing_address": {
+            "line1": "123 Arco",
+            "city": "San Diego",
+            "state_code": "CA",
+            "state": "California",
+            "country": "US",
+            "zip": "92121",
+            "validation_status": "not_validated",
+            "object": "billing_address"
+          },
+          "card_status": "no_card",
+          "promotional_credits": 0,
+          "refundable_credits": 0,
+          "excess_payments": 0,
+          "unbilled_charges": 0,
+          "preferred_currency_code": "USD"
+        }
+      },
+      {
+        "customer": {
+          "id": "AzZdGJSjG2wft7pDO",
+          "email": "alex@tenet.com",
+          "company": "Tenet",
+          "auto_collection": "on",
+          "net_term_days": 0,
+          "allow_direct_debit": false,
+          "created_at": 1631869800,
+          "created_from_ip": "212.114.229.125",
+          "taxability": "taxable",
+          "updated_at": 1632862510,
+          "pii_cleared": "active",
+          "resource_version": 1632862510919,
+          "deleted": false,
+          "object": "customer",
+          "billing_address": {
+            "first_name": "Alexander",
+            "last_name": "Liegl",
+            "line1": "100 Avenue A",
+            "line2": "5E",
+            "city": "New York",
+            "state_code": "NY",
+            "state": "New York",
+            "country": "US",
+            "zip": "10009",
+            "validation_status": "not_validated",
+            "object": "billing_address"
+          },
+          "promotional_credits": 0,
+          "refundable_credits": 0,
+          "excess_payments": 0,
+          "unbilled_charges": 0,
+          "preferred_currency_code": "USD",
+          "primary_payment_source_id": "pm_16COTmSjG3Ngn7XHN",
+          "payment_method": {
+            "object": "payment_method",
+            "type": "direct_debit",
+            "reference_id": "cus_KF7JxTJZ0WN4wp/ba_1Jad4wHLLh7YdRB0QarMb5vX",
+            "gateway": "stripe",
+            "gateway_account_id": "gw_16CPQfS5y3U2APe",
+            "status": "valid"
+          },
+          "channel": "web"
+        }
+      }
+    ],
+    "next_offset": "[\"1631869800000\",\"43443894\"]"
+  }
+}
