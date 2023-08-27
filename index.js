@@ -89,13 +89,14 @@ exports.fetchChargeBee = async (req, res) => {
     // on the initial sync we want to pull all data up through today
     // ChargeBee works with timestamps in seconds since UTC
     current_time = Math.floor(Date.now() / 1000);
+    console.log(`current_time: `, current_time);
     let after_time = null;
     if ("state" in req.body && "last_synced_time" in req.body.state) {
         // for subsequent syncs, we only want to pull data since last sync up through today
-        const MS_PER_MINUTE = 60000;
+        const SECS_PER_MINUTE = 60;
         const durationInMinutes = 5;
         last_synced_time = req.body.state.last_synced_time;
-        after_time = last_synced_time - durationInMinutes * MS_PER_MINUTE;
+        after_time = last_synced_time - durationInMinutes * SECS_PER_MINUTE;
     }
 
     const transactions = chargebee.transaction;
@@ -104,6 +105,8 @@ exports.fetchChargeBee = async (req, res) => {
     subscriptions.name = "Subscriptions";
     const customers = chargebee.customer;
     customers.name = "Customers";
+    const plans = chargebee.plan;
+    plans.name = "Plans";
 
     const promises = await Promise.allSettled([
         fetchResource(transactions, CB_SITE_US, CB_API_KEY_US, current_time, after_time),
@@ -112,6 +115,8 @@ exports.fetchChargeBee = async (req, res) => {
         fetchResource(subscriptions, CB_SITE_EU, CB_API_KEY_EU, current_time, after_time),
         fetchResource(customers, CB_SITE_US, CB_API_KEY_US, current_time, after_time),
         fetchResource(customers, CB_SITE_EU, CB_API_KEY_EU, current_time, after_time),
+        fetchResource(plans, CB_SITE_US, CB_API_KEY_US, current_time, after_time),
+        fetchResource(plans, CB_SITE_EU, CB_API_KEY_EU, current_time, after_time),
     ]);
 
     // console.log('promises: ', promises)
@@ -126,6 +131,21 @@ exports.fetchChargeBee = async (req, res) => {
             transactions: [],
             subscriptions: [],
             customers: [],
+            plans: [],
+        },
+        schema: {
+            transactions: {
+                primary_key: ["id"]
+            },
+            subscriptions: {
+                primary_key: ["id"]
+            },
+            customers: {
+                primary_key: ["id"]
+            },
+            plans: {
+                primary_key: ["id"]
+            }
         },
     }
 
@@ -141,6 +161,9 @@ exports.fetchChargeBee = async (req, res) => {
                 }
                 if ("customer" in item) {
                     aggregated_result.insert.customers.push(item.customer);
+                }
+                if ("plan" in item) {
+                    aggregated_result.insert.plans.push(item.plan);
                 }
             }
         }
